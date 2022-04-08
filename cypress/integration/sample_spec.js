@@ -51,6 +51,6 @@ describe("Calculator", () => {
       cy.contains("%").click();
       cy.contains("2").click();
       cy.contains("=").click();
-      cy.get(".result").contains("0");
+      cy.get(".result").contains("1");
     });
 });
