@@ -1,6 +1,8 @@
   name: Node CI
 
   on: push
+  
+  ![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
   jobs:
     build:
