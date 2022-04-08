@@ -1,21 +1,15 @@
   name: Node CI
-
   on: push
-
   jobs:
     build:
       runs-on: ubuntu-latest
-
       steps:
         - name: Checkout 🛎️
-          uses: actions/checkout@master
-
+          uses: actions/checkout@main
         - name: Install 🔧
           run: npm install
-
         - name: Build 🏗️
           run: npm run build
-
         - name: Test 🚨
           run: npm test
 
