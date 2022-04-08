@@ -1,0 +1,57 @@
+  name: Node CI
+
+  on: push
+
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout 🛎️
+          uses: actions/checkout@master
+
+        - name: Install 🔧
+          run: npm install
+
+        - name: Lint 🧐
+          run: npm run lint
+
+        - name: Build 🏗️
+          run: npm run build
+
+        - name: Test 🚨
+          run: npm test
+
+          jobs:
+    build:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout 🛎️
+          uses: actions/checkout@master
+
+        - name: Install 🔧
+          run: yarn install
+
+        - name: Lint 🧐
+          run: yarn lint
+
+        - name: Build 🏗️
+          run: yarn build
+
+        - name: Test 🚨
+          run: yarn test
+
+          jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@master
+
+      - name: Lint 🧐
+        run: npx eslint .
+
+      - name: Check for updates 🧐
+        run: npx npm-check-updates

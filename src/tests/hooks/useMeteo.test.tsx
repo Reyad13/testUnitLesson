@@ -6,7 +6,7 @@ import { render, waitFor, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import App from "../../App";
 
-const server = setupServer(
+export const handler = [
   rest.get(
     "https://prevision-meteo.ch/services/json/aix-en-provence",
     (req, res, ctx) => {
@@ -17,11 +17,32 @@ const server = setupServer(
               "https://prevision-meteo.ch/style/images/icon/nuit-legerement-voilee-big.png",
           },
         })
+        );
+      }
+    ),
+    rest.get(
+    "https://randomuser.me/api",
+    (req, res, ctx) => {
+      return res(
+        ctx.json({
+          results: [{
+            picture: {
+              thumbnail:
+              "https://prevision-meteo.ch/style/images/icon/nuit-legerement-voilee-big.png",
+          },
+          "name": {
+            "title": "Mr",
+            "first": "Brad",
+            "last": "Gibson"
+          },
+        }]
+      })
       );
     }
   )
-);
+]
 
+const server = setupServer(...handler)
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
@@ -31,3 +52,9 @@ test("load meteo mock", async () => {
   await waitFor(() => screen.getByText(/Météo actuel/i));
   expect(container.getElementsByTagName("img").length).toBe(1);
 });
+
+test("load name randomUser", async () => {
+  const { container } = render(<App />);
+  await waitFor(() => screen.getByText(/Utilisateur/i));
+  expect(container.getElementsByTagName("p")[1].textContent).toContain("Mr Brad Gibson");
+}); 
