@@ -1,3 +1,3 @@
 # testUnitLesson
 
-[![Node CI](https://github.com/Reyad13/testUnitLesson/actions/workflows/nodeci.yml/badge.svg?branch=testUnitJS&event=push)](https://github.com/Reyad13/testUnitLesson/actions/workflows/nodeci.yml)
+[![Back Unit Tests](https://github.com/Reyad13/testUnitLesson/actions/workflows/symfony.yml/badge.svg?branch=FinalProjectCorrection&event=push)](https://github.com/Reyad13/testUnitLesson/actions/workflows/symfony.yml)
